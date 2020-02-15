@@ -29,17 +29,6 @@ function installAwsCdk(){
 	fi
 }
 
-function installPipRequirements(){
-	if [ -e "requirements.txt" ]; then
-		echo "Install requirements.txt"
-		pip install -r requirements.txt >/dev/null 2>&1
-		if [ "${?}" -ne 0 ]; then
-			echo "Failed to install requirements.txt"
-		else
-			echo "Successful install requirements.txt"
-		fi
-	fi
-}
 
 function runCdk(){
 	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
@@ -74,7 +63,7 @@ ${output}
 
 function main(){
 	parseInputs
-    echo $(ls)
+    echo *
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	runCdk
