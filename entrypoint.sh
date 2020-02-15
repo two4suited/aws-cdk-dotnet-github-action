@@ -45,7 +45,7 @@ function runCdk(){
 
 function main(){
 	parseInputs
-	dirlist = $(ls 2>&1)
+	dirlist=$(ls 2>&1)
     echo "${dirlist}"
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
