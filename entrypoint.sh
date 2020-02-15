@@ -41,24 +41,6 @@ function runCdk(){
 	if [ "${exitCode}" == "0" -o "${exitCode}" == "1" ]; then
 		commentStatus="Success"
 	fi
-
-	if [ "${INPUT_ACTIONS_COMMENT}" == "true" ]; then
-		commentWrapper="#### \`cdk ${INPUT_CDK_SUBCOMMAND}\` ${commentStatus}
-<details><summary>Show Output</summary>
-
-\`\`\`
-${output}
-\`\`\`
-
-</details>
-
-*Workflow: \`${GITHUB_WORKFLOW}\`, Action: \`${GITHUB_ACTION}\`, Working Directory: \`${INPUT_WORKING_DIR}\`*"
-
-		payload=$(echo "${commentWrapper}" | jq -R --slurp '{body: .}')
-		commentsURL=$(cat ${GITHUB_EVENT_PATH} | jq -r .pull_request.comments_url)
-
-		echo "${payload}" | curl -s -S -H "Authorization: token ${GITHUB_TOKEN}" --header "Content-Type: application/json" --data @- "${commentsURL}" > /dev/null
-	fi
 }
 
 function main(){
