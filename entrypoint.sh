@@ -49,6 +49,7 @@ function main(){
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	runCdk
+	uuy
 }
 
 main
