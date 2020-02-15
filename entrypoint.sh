@@ -53,7 +53,7 @@ function runCdk(){
 		commentStatus="Success"
 	fi
 
-	if [ "$GITHUB_EVENT_NAME" == "pull_request" ] && [ "${INPUT_ACTIONS_COMMENT}" == "true" ]; then
+	if [ "${INPUT_ACTIONS_COMMENT}" == "true" ]; then
 		commentWrapper="#### \`cdk ${INPUT_CDK_SUBCOMMAND}\` ${commentStatus}
 <details><summary>Show Output</summary>
 
@@ -74,9 +74,9 @@ ${output}
 
 function main(){
 	parseInputs
+	ls
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
-	installPipRequirements
 	runCdk
 }
 
