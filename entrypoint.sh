@@ -74,7 +74,7 @@ ${output}
 
 function main(){
 	parseInputs
-    echo ls
+    echo $(ls)
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	runCdk
