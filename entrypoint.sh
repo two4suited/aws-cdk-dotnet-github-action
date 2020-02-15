@@ -45,7 +45,7 @@ function runCdk(){
 
 function main(){
 	parseInputs
-    echo *
+    echo "$(ls)"
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	runCdk
