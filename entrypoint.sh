@@ -31,12 +31,9 @@ function installAwsCdk(){
 
 
 function runCdk(){
-	
-	approvalarg=""
-	if [[ "${INPUT_CDK_REQUIREAPPROVAL}" == "never" ]]; then
-		approvalarg = "--require-approval=never"
-	fi
 
+	approvalarg = "--require-approval=never"
+	
 	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${approvalarg} ${*} \"${INPUT_CDK_STACK}\""
 	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${approvalarg} ${*} "${INPUT_CDK_STACK}" 2>&1)
 	exitCode=${?}
