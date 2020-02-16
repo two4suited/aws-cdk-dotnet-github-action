@@ -45,7 +45,7 @@ function runCdk(){
 	if [ "${exitCode}" == "0" -o "${exitCode}" == "1" ]; then
 		commentStatus="Success"
 	else
-		exit ${exitCode}
+		exit 1
 	fi
 
 }
