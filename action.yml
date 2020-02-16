@@ -17,12 +17,6 @@ inputs:
   working_dir:
     description: 'AWS CDK working directory.'
     default: '.'
-  actions_comment:
-    description: 'Whether or not to comment on pull requests.'
-    default: true
-  cdk_requireapproval:
-    description: 'Flag for approval for IAM Changes'
-    default: 'never'
 outputs:
   status_code:
     description: 'Returned status code.'
