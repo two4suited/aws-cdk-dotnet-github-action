@@ -33,7 +33,7 @@ function installAwsCdk(){
 function runCdk(){
 	
 	approvalarg=""
-	if [ "${INPUT_CDK_REQUIREAPPROVAL}" == "never"]; then
+	if [ "${INPUT_CDK_REQUIREAPPROVAL}" == "never" ]; then
 		approvalarg = "--require-approval=never"
 	fi
 
