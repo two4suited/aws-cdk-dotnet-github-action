@@ -31,7 +31,11 @@ function installAwsCdk(){
 
 
 function runCdk(){
-	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
+	
+	if ["${INPUT_CDK_REQUIREAPPROVAL}" != ""]; then
+		approvalarg = "--require-approval=${INPUT_CDK_REQUIREAPPROVAL}"
+
+	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${approvalarg} ${*} \"${INPUT_CDK_STACK}\""
 	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1)
 	exitCode=${?}
 	echo ::set-output name=status_code::${exitCode}
@@ -40,7 +44,10 @@ function runCdk(){
 	commentStatus="Failed"
 	if [ "${exitCode}" == "0" -o "${exitCode}" == "1" ]; then
 		commentStatus="Success"
+	else
+		exit ${exitCode}
 	fi
+
 }
 
 function main(){
